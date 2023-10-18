@@ -73,9 +73,6 @@ class MushMC:
             Processes the API response and initializes the player's attributes.
             """
 
-            if self.raw_response.get('stats'):
-                self.raw_response['play_time'] = self.raw_response['stats'].pop('play_time')
-            self.play_time = self.raw_response.get('play_time')
             self.first_login = self.raw_response.get('first_login')
             self.last_login = self.raw_response.get('last_login')
             self.is_online = self.raw_response.get('connected')
@@ -83,6 +80,9 @@ class MushMC:
             self.account = self.raw_response.get('account')
             self.rank = self.raw_response.get('rank')
             self.clan = self.raw_response.get('clan')
+            if self.raw_response.get('stats'):
+                self.raw_response['play_time'] = self.raw_response['stats'].pop('play_time')
+            self.play_time = self.raw_response.get('play_time')
 
         def list_games(self) -> list:
             """
