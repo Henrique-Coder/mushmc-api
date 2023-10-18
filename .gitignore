@@ -1,4 +1,7 @@
-# IDE folders/files
+# IDE
 .idea
 venv
 __pycache__
+
+# Other
+debugging.py
