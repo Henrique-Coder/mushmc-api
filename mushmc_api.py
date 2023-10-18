@@ -9,6 +9,14 @@ class MushMC:
     Class to interact with the MushMC API.
     """
 
+    def __init__(self, async_run: bool = False):
+        """
+        Initializes the API object.
+        :param async_run: Whether to use asyncio or not.
+        """
+
+        self.async_run = async_run
+
     @staticmethod
     def get_api_response(url: str, retries: int = 3, timeout: int = 5) -> dict:
         """
@@ -84,9 +92,9 @@ class MushMC:
 
             return list(self.raw_response.get('stats', {}).keys())
 
-        def get_game_status(self, game: str) -> dict:
+        def get_game_stats(self, game: str) -> dict:
             """
-            Gets the status of a specific game played by the player.
+            Gets the stats of a specific game played by the player.
             :param game: Name of the game.
             :return: Game data in JSON format.
             """
